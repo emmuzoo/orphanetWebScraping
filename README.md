@@ -1,5 +1,5 @@
 # orphanetWebScraping
-Consgrucion de un dataset de enfermedades raras
+Construcion de un dataset de enfermedades raras
 
 
 pip install scrapy
