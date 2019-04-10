@@ -22,10 +22,11 @@ attr2fields = {
 class OrphanetSpider(CrawlSpider):
 	name = 'orphanet'
 	allowed_domains = ['www.orpha.net']
-	start_urls = ['https://www.orpha.net/consor/cgi-bin/Disease_Search.php?lng=EN&search=Disease_Search_List']
+	#start_urls = ['https://www.orpha.net/consor/cgi-bin/Disease_Search.php?lng=EN&search=Disease_Search_List']
+	start_urls = ['https://www.orpha.net/consor/cgi-bin/Disease_Search_List.php?lng=EN&TAG=Z']
 	
 	rules = (
-		Rule(LinkExtractor(allow=(), restrict_xpaths=("//ul[@class='alphabet']/li/a")), follow=True),
+		#Rule(LinkExtractor(allow=(), restrict_xpaths=("//ul[@class='alphabet']/li/a[@href='Disease_Search_List.php?lng=EN&TAG=Z']")), follow=True),
 		Rule(LinkExtractor(allow=(), restrict_xpaths=('//div[@id="result-box"]/ul/li/a')), callback='parse_item', follow=True),
 	)
 	
