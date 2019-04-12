@@ -1,7 +1,7 @@
 # orphanetWebScraping
 Construcción de un dataset de enfermedades raras
 
-## Intalación de dependencias
+## Instalación de dependencias
 Para realizar este proyecto se ha utilizado python 3.7 y Scrapy. Scrapy es un framework de código abierto y colaborativo para extraer datos de sitios web. Para instalar scrapy abrimos una ventana de línea de comandos y ejecutamos el siguiente comando.
 
 pip install scrapy
@@ -11,7 +11,7 @@ Para crear un proyecto con scrapy en la línea de comandos ejecutamos lo siguien
 
 scrapy startproject orphanetCrawler
 
-Rebombramos el directorio "orphanetCrawler" a "orphanetWebScraping".
+Renombramos el directorio "orphanetCrawler" a "orphanetWebScraping".
 
 ## Creación de Spider
 Para crear el spider en la línea de comandos ejecutamos lo siguiente.
