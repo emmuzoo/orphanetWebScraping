@@ -17,6 +17,7 @@ Renombramos el directorio "orphanetCrawler" a "orphanetWebScraping".
 Para crear el spider en la línea de comandos ejecutamos lo siguiente.
 
 cd orphanetWebScraping
+
 scrapy genspider -t crawl orphanet www.orpha.net
 
 ## Ejecución del Spider
