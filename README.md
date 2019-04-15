@@ -37,3 +37,4 @@ scrapy crawl orphanet -o report.csv -t csv -s LOG_FILE=orphanCrawl.log
 | rared_diseases_zebra.png | Imagen representativa del dataset |
 | report.csv | Dataset generado que contiene todas las ER con su información recolectadas de www.orpha.net|
 | scrapy.cfg | Fichero de configuración de scrapy|
+| PRACTICA1.pdf | Fichero PDF con el informe de la práctica|
