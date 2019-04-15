@@ -22,25 +22,21 @@ attr2fields = {
 class OrphanetSpider(CrawlSpider):
 	name = 'orphanet'
 	allowed_domains = ['www.orpha.net']
-	#start_urls = ['https://www.orpha.net/consor/cgi-bin/Disease_Search.php?lng=EN&search=Disease_Search_List']
-	start_urls = ['https://www.orpha.net/consor/cgi-bin/Disease_Search_List.php?lng=EN&TAG=Z']
-	
+	start_urls = ['https://www.orpha.net/consor/cgi-bin/Disease_Search.php?lng=EN&search=Disease_Search_List']
+    
 	rules = (
-		#Rule(LinkExtractor(allow=(), restrict_xpaths=("//ul[@class='alphabet']/li/a[@href='Disease_Search_List.php?lng=EN&TAG=Z']")), follow=True),
+		Rule(LinkExtractor(allow=(), restrict_xpaths=("//ul[@class='alphabet']/li/a")), follow=True),
 		Rule(LinkExtractor(allow=(), restrict_xpaths=('//div[@id="result-box"]/ul/li/a')), callback='parse_item', follow=True),
 	)
 	
 	def parse_item(self, response):
 		item = {}
-		#item['domain_id'] = response.xpath('//input[@id="sid"]/@value').get()
-		#item['name'] = response.xpath('//div[@id="name"]').get()
-		#item['description'] = response.xpath('//div[@id="description"]').get()
 		# Information
 		item = OrphanetCrawlerItem()
 		info = response.css("div.idcard")
 		item["name"] = response.xpath("//title/text()").get()
 		item["orphan"] = info.xpath("./h3/text()").get()
-		item['url'] = response.url
+		item["url"] = response.url
 		for property in info.css("ul.idData li"):
 			#print(property)
 			attr = property.xpath("./em/text()").get()
@@ -72,6 +68,9 @@ class OrphanetSpider(CrawlSpider):
 					continue
 				
 		
+		item["last_updated"] = response.xpath('//div[@class="articleInfo"]/p[@class="author"]/strong[2]/text()').get()
+		
+		
 		# Additional Information
 		addinfo = response.css("div.articleAdd")
 		#print(addinfo.get())
@@ -81,6 +80,7 @@ class OrphanetSpider(CrawlSpider):
 		if pubmed is not None:
 			item["pubMed"] = pubmed.css("::text").get()
 		#print(item)
+        
 		
 		yield item
 	

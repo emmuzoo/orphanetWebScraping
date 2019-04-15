@@ -6,7 +6,10 @@ import csv
 
 
 class CsvItemExporter(BaseItemExporter):
-	fieldnames_standard = ['orphan', 'name']
+	fieldnames_standard = ['orphan', 'name', 
+                        'synonyms', 'prevalence', 'ageOfonset', 'inheritance', 
+                        'ICD10', 'OMIM', 'UMLS', 'MeSH', 'GARD', 'MedDRA', 
+                        'pubMed', 'url']
 	
 	def __init__(self, file, **kwargs):
 		self._configure(kwargs)
